@@ -1,0 +1,7 @@
+/src
+/.images
+!.husky
+/example
+public
+index.html
+/__test__

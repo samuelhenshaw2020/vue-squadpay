@@ -1,0 +1,1 @@
+export const SQUAD_PAYMENT_MODAL_SCRIPT_LINK = "https://checkout.squadco.com/widget/squad.min.js"; 
