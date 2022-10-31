@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import SquadPay from "../libs"
+import SquadPay from "vue-squadpay"
 import {ref} from 'vue'
 
 
