@@ -1,6 +1,6 @@
 {
   "name": "vue-squadpay",
-  "private": true,
+  "private": false,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
@@ -31,5 +31,43 @@
     "vitest": "^0.24.3",
     "vue-eslint-parser": "^9.1.0",
     "vue-tsc": "^1.0.9"
-  }
+  },
+  "files": [
+    "dist",
+    "dist/**/*.ts"
+  ],
+  "main": "./dist/squad.umd.js",
+  "module": "./dist/squad.es.js",
+  "exports": {
+    "import": "./dist/squad.es.js",
+    "require": "./dist/squad.umd.js"
+  },
+  "types": "dist/index.d.ts",
+  "typings": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/samuelhenshaw2020/vue-squadpay.git"
+  },
+  "bugs": {
+    "url": "https://github.com/samuelhenshaw2020/vue-squadpay/issues"
+  },
+  "author": {
+    "name": "Samuel Henshaw"
+  },
+  "keywords": [
+    "Vue3",
+    "Vue",
+    "Payment Gateway",
+    "Payment",
+    "Online Payment",
+    "Squad Payment",
+    "Squad Online payment"
+  ],
+  "description": "Vue3 GTCO Squad payment gateway",
+  "engines": {
+    "node": ">=10"
+  },
+  "homepage": "https://github.com/samuelhenshaw2020/vue-squadpay#readme",
+  "license": "MIT",
+  "access": "public"
 }
