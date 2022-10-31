@@ -5,7 +5,7 @@ import {ref} from 'vue'
 
 
 const params = ref({
-    key: "sandbox_pk_570ae070b2d3c21cc0bf84416927b74e3323d0203686",
+    key: "test_pk_sample-public-key-1",
     email: "example@mail.com", // from HTML form
     amount: 5000, // no need to multiply by 100 for kobo, its taken care for you
     currencyCode: "NGN",
