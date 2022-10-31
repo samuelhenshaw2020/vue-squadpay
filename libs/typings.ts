@@ -28,7 +28,6 @@ export interface SquadParams {
 }
 
 export interface SquadPayProps {
-    className?: string,
     text?: string,
     params: SquadParams,
 }

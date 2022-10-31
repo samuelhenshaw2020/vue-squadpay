@@ -22,7 +22,6 @@ declare module "vue-squadpay"{
     }
     
     export interface SquadPayProps {
-        className?: string,
         text?: string,
         params: SquadParams
     }

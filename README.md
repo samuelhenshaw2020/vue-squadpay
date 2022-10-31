@@ -1,10 +1,10 @@
-# GTCO Squad Payment React Library
+# GTCO Squad Payment Vue3 Library
 
-[![Issues](	https://img.shields.io/github/issues/samuelhenshaw2020/react-squadpay)](https://github.com/samuelhenshaw2020/react-squadpay/issues)
-[![Forks](	https://img.shields.io/github/forks/samuelhenshaw2020/react-squadpay)](https://github.com/samuelhenshaw2020/react-squadpay/network/members)
-[![Stars](	https://img.shields.io/github/stars/samuelhenshaw2020/react-squadpay)](https://github.com/samuelhenshaw2020/react-squadpay/stargazers)
-[![Pull Request](https://img.shields.io/github/issues-pr/samuelhenshaw2020/react-squadpay)](https://github.com/samuelhenshaw2020/react-squadpay/stargazers)
-[![Stats](https://img.shields.io/github/watchers/samuelhenshaw2020/react-squadpay)](https://github.com/samuelhenshaw2020/react-squadpay/stargazers)
+[![Issues](	https://img.shields.io/github/issues/samuelhenshaw2020/vue-squadpay)](https://github.com/samuelhenshaw2020/vue-squadpay/issues)
+[![Forks](	https://img.shields.io/github/forks/samuelhenshaw2020/vue-squadpay)](https://github.com/samuelhenshaw2020/vue-squadpay/network/members)
+[![Stars](	https://img.shields.io/github/stars/samuelhenshaw2020/vue-squadpay)](https://github.com/samuelhenshaw2020/vue-squadpay/stargazers)
+[![Pull Request](https://img.shields.io/github/issues-pr/samuelhenshaw2020/vue-squadpay)](https://github.com/samuelhenshaw2020/vue-squadpay/stargazers)
+[![Stats](https://img.shields.io/github/watchers/samuelhenshaw2020/vue-squadpay)](https://github.com/samuelhenshaw2020/vue-squadpay/stargazers)
 
 
 [Squad Payment](https://squadco.com/) is a comprehensive payments solution powered by GTCO that enables all types of businesses to make and receive payments from anywhere in the world.
@@ -12,57 +12,137 @@
 **Note**: Before you proceed, signup for a Sandbox account at [Squad Sandbox platform](https://sandbox.squadco.com/sign-up) to obtain necessary public and private keys.
 
 ### Payment Modal
-![](https://github.com/samuelhenshaw2020/react-squadpay/blob/main/.images/squad.png?raw=true)
+![](https://github.com/samuelhenshaw2020/vue-squadpay/blob/main/.images/squad.png?raw=true)
 
 ## Installation
 To install, run:
 ```bash
-npm install react-squadpay 
+npm install vue-squadpay 
 ```
 
 ## Usage
 
+### Template
 
-```jsx
-import SquadPay from "react-squadpay"
-
-function App() {
-
-  const params = {
-    key: "test_pk_sample-public-key-1",
-    email: "example@mail.com", // from HTML form
-    amount: 5000, // no need to multiply by 100 for kobo, its taken care for you
-    currencyCode: "NGN"
-  }
-
-  const Close = () => {
-    console.log("Widget closed")
-  }
-
-  const Load = () => {
-    console.log("Widget Loaded")
-  }
-
-  /**
-   * @param {object} data
-   * @description  reponse when payment is successful
-   */
-  const Success = (data) => {
-    console.log(data)
-    console.log("Widget success")
-  }
-
-  return (
-    <div>
-        <SquadPay className='css_class_here' text='Pay now' params={params} onClose={Close} onLoad={Load} onSuccess={(res)=>Success(res)} />
-    </div>
-  )
-}
-
-export default App
+```html
+ <template>
+    <SquadPay text="Pay now" :params="params" class="btn btn-primary" @err="onError" @close="onClose" @success="onSuccess" @loaded="onLoad" />
+</template>
 
 
 ```
+
+### Script for Composition API
+
+
+```js
+
+<script setup lang="js">
+import SquadPay from "vue-squadpay"
+import {ref} from 'vue'
+
+const params = ref({
+    key: "test_pk_sample-public-key-1",
+    email: "example@mail.com", // from HTML form
+    amount: 5000, // no need to multiply by 100 for kobo, its taken care for you
+    currencyCode: "NGN",
+    reference: Date.now().toString(),
+  })
+
+  const onSuccess = (data) => {
+    console.log(data)
+  }
+
+  const onLoad = () => {
+    console.log("module loaded")
+  }
+
+  const onError = () => {
+    console.log("Error occured")
+  }
+
+   const onClose = () => {
+    console.log("Widget Closed")
+  }
+</script>
+
+```
+
+### Script for Composition API with Typescript
+```js
+
+<script setup lang="ts">
+import SquadPay, { SquadParams} from "vue-squadpay"
+import {ref} from 'vue'
+
+const params = ref<SquadParams>({
+    key: "test_pk_sample-public-key-1",
+    email: "example@mail.com", // from HTML form
+    amount: 5000, // no need to multiply by 100 for kobo, its taken care for you
+    currencyCode: "NGN",
+    reference: Date.now().toString(),
+  })
+
+  const onSuccess = (data): void => {
+    console.log(data)
+  }
+
+  const onLoad = (): void => {
+    console.log("module loaded")
+  }
+
+  const onError = (): void => {
+    console.log("Error occured")
+  }
+
+   const onClose = (): void => {
+    console.log("Widget Closed")
+  }
+</script>
+
+```
+
+### Script for Options 
+
+```js
+<script >
+import SquadPay from "vue-squadpay"
+export default {
+  components: {
+    SquadPay
+  },
+  data(){
+    return {
+      params:{
+          key: "test_pk_sample-public-key-1",
+          email: "example@mail.com", // from HTML form
+          amount: 5000, // no need to multiply by 100 for kobo, its taken care for you
+          currencyCode: "NGN",
+          reference: Date.now().toString(),
+      }
+    }
+  },
+  methods: {
+    onSuccess(data){
+      console.log(data)
+    }
+
+    onLoad(){
+      console.log("module loaded")
+    }
+
+    onError(){
+      console.log("Error occured")
+    }
+
+    onClose(){
+      console.log("Widget Closed")
+    }
+  }
+}
+</script>
+```
+
   
 
 
@@ -125,16 +205,17 @@ After a transaction, a sample response from the `onSuccess function` will be:
 ```
 
 
-## SquadPay component props
+## SquadPay component props and Events
 Below are list of the props of the `<SquadPay />` component.
 
 | Parameters           | Data Type                 | Required | Description                                                                                                                                                                                                                                         |
 |----------------------|---------------------------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | text         | string                   | false     | It specifies the text to display on the button.
 | params        | object                  | true    | object to set squad pay parameters. `refer to parameter list above`
-| onSuccess         |  function       | false    |  `Event` fires when payment is successful. it returns a `parameter` that represent the details of payment in `object` 
-| onLoad         |  boolean       | false    | `Event` fires when the Payment Modal Widget loads
-| onClose         |  boolean       | false    | Payment fires when the Payment Modal Widget closes
+| @success         |  event       | false    |  `Event` fires when payment is successful. it returns a `parameter` that represent the details of payment in `object` 
+| @loaded         |  event       | false    | `Event` fires when the Payment Modal Widget loads
+| @close        |  event       | false    | Payment fires when the Payment Modal Widget closes
+| @err        |  event       | false    | Payment fires when the Payment Modal Widget closes
 
 ### Go Live
 
